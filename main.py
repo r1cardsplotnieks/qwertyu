@@ -45,9 +45,14 @@ import os
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
-
-
-
+import csv
+def prasa():
+  fails1 = open("kontrolpunkti.csv","r")
+  lasa = csv.DictReader(fails1)
+  lauki = ['pilseta','k1','k2','k3','k4','k5','k6','k7','k8','k9','k0',]
+  for rinda in lasa:
+    print(rinda[input('')])
+prasa()
 class style():
     BLACK = '\033[30m'
     RED = '\033[31m'
@@ -113,7 +118,7 @@ valmiera()
 
 def vidusp():
   gulet()
-  print("Pirms dodaties uz ziemeļiem, vai vēlaties uzzināt spēles noteikumus vēlreiz?")
+  print("Pirms dodaties uz Cēsis, vai vēlaties uzzināt spēles noteikumus vēlreiz?")
   gulet()
   print("(1) - Jā")
   print("(2) - Nē")
@@ -138,33 +143,32 @@ def redzams():
   import random
   y = random.randint(1, 3)
   if y == 1:
-    print("zirgs")
+    return "zirgs"
   elif y == 2:
-    print("zaķis")
+    return "zaķis"
   elif y == 3:
-    print("stirna")
+    return "stirna"
   else:
-    print("kaķis")
-
+    return "kaķis"
 def lietus():
   import random
   ll = random.randint(1, 3)
   if ll == 1:
-    print(D + "78%" + CEND, ",Jūsu atrašanās vieta - blakus Lizdēniem")
+    return D + "78%" + CEND, ",Jūsu atrašanās vieta - blakus Sapas"
   elif ll == 2:
-    print(D + "75%" + CEND, ",Jūsu atrašanās vieta - blakus Rencēniem")
+    return D + "75%" + CEND, ",Jūsu atrašanās vieta - blakus Penderi"
   elif ll == 3:
-    print(D + "70%" + CEND, ",Jūsu atrašanās vieta - blakus Baložiem")
+    return D + "70%" + CEND, ",Jūsu atrašanās vieta - blakus Bušugrava"
 
 def saule():
   import random
   dd = random.randint(1, 3)
   if dd == 1:
-    print(D + "95%" + CEND + ", Jūsu atrašanās vieta - blakus Lizdēniem")
+    return D + "95%" + CEND + ", Jūsu atrašanās vieta - blakus Sapas"
   elif dd == 2:
-    print(D + "96%" + CEND + ", Jūsu atrašanās vieta - blakus Rencēniem")
+    return D + "96%" + CEND + ", Jūsu atrašanās vieta - blakus Penderi"
   elif dd == 3:
-    print(D + "93%" + CEND + ", Jūsu atrašanās vieta - blakus Baložiem")
+    return D + "93%" + CEND + ", Jūsu atrašanās vieta - blakus Bušugrava"
     
 def us1():
   sleep()
@@ -174,19 +178,21 @@ def us1():
   g = input("Atbilde: ")
   if g == "1":
     print("Jūsu akumulatora daudzums ir: ")
-    if "laikap()" == 1:
-      lietus()
+    if laikap() == 1:
+      print(lietus())
     else: 
-      saule()
+      print(saule())
+  elif g == "n":
+    noteikumi()
   else:
-    print("Paskaties, vai tas tik nav - ", redzams())
+    print("Paskaties, vai tas tik nav -", redzams())
   sleep()
   print("Braucat.. braucat...")
   sleep()
-  print("Pabraucāt garām Endzelei, nozīmē, ka tuvojaties!")
+  print("Pabraucāt garām Jaunkalne, nozīmē, ka tuvojaties!")
   sleep()
   print("------------------------------------------------")
-  print(CRED + "Esat veiksmīgi iebraukuši Rūjienā!" + CEND)
+  print(CRED + "Esat veiksmīgi iebraukuši Cēsīs!" + CEND)
   print("------------------------------------------------")
 
 def viens1():
@@ -223,7 +229,7 @@ def viens():
   while s != k:
     c = input("Atbilde: ")
     if c == "1":
-      print("Labi, tad Jūsu pirmais robežpunkts - Rūjiena! Lai Jums ir veiksmīgs brauciens. ")
+      print("Labi, tad Jūsu pirmais robežpunkts - Cēsis! Lai Jums ir veiksmīgs brauciens. ")
       us1()
       k+=1
     elif c == "2":
