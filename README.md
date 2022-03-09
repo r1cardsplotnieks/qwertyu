@@ -1,2 +1,2 @@
-# Mieru pasaulei
-# Te mēs drukājam miera tekstus
+# Slapjie bandīti
+# Datorspēle
