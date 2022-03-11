@@ -1,3 +1,7 @@
+from PIL import Image
+#myImage = Image.open("filter(function, iterable).jpg");
+#myImage.show();
+
 print("------------------------------------------------")
 print("------------------------------------------------")
 print("------------------------------------------------")
@@ -31,12 +35,18 @@ def laikap():
   import random
   b = random.randint(1, 2)
   if b == 1:
-    print("Šodien ārā līst lietus, zibeņi zibšņ")
+    print("Tagad ārā līst lietus, zibeņi zibšņ - 80km")
   elif b == 2:
-    print("Šodien ārā spīd skaista saulīte!")
+    print("Tagad ārā spīd skaista saulīte - 140km")
   else:
     print("Nogājusi kļūda, laikapstākļi šodienai nav pieejami!")
+  fails1 = open("kontrolpunkti.csv","r")
+  lasa = csv.DictReader(fails1)
+  lauki = ['k1','k2','k3','k4','k5','k6','k7','k8','k9']
+  for rinda in lasa:
+    print(int(rinda['k1']))
 
+  
 CRED = '\033[91m'
 CEND = '\033[0m'
 D = '\033[36m'
@@ -46,13 +56,13 @@ import os
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 import csv
-def prasa():
+def rekinal():
   fails1 = open("kontrolpunkti.csv","r")
   lasa = csv.DictReader(fails1)
-  lauki = ['pilseta','k1','k2','k3','k4','k5','k6','k7','k8','k9','k0',]
+  lauki = ['k1','k2','k3','k4','k5','k6','k7','k8','k9']
   for rinda in lasa:
-    print(rinda[input('')])
-prasa()
+    print(80-int(rinda['k1']))
+rekinal()
 class style():
     BLACK = '\033[30m'
     RED = '\033[31m'
@@ -150,15 +160,7 @@ def redzams():
     return "stirna"
   else:
     return "kaķis"
-def lietus():
-  import random
-  ll = random.randint(1, 3)
-  if ll == 1:
-    return D + "78%" + CEND, ",Jūsu atrašanās vieta - blakus Sapas"
-  elif ll == 2:
-    return D + "75%" + CEND, ",Jūsu atrašanās vieta - blakus Penderi"
-  elif ll == 3:
-    return D + "70%" + CEND, ",Jūsu atrašanās vieta - blakus Bušugrava"
+
 
 def saule():
   import random
@@ -179,9 +181,9 @@ def us1():
   if g == "1":
     print("Jūsu akumulatora daudzums ir: ")
     if laikap() == 1:
-      print(lietus())
+      lietus()
     else: 
-      print(saule())
+      saule()
   elif g == "n":
     noteikumi()
   else:
@@ -244,3 +246,71 @@ def viens():
       k+=0
 
 viens()
+def sveikini():
+  import random
+  j = random.randint(1, 3)
+  if j == 1:
+    return "59%"
+  elif j == 2:
+    return "68%"
+  elif j == 3:
+    return "79%"
+  else:
+    return "99,9%"
+
+def laicins():
+  import random
+  h = random.randint(1, 3)
+  if h == 1:
+    return "14:34"
+  elif h == 2:
+    return "16:34"
+  elif h == 3:
+    return "11:50"
+  else:
+    return "99,9%"
+
+  
+def cesis():
+  global punkti
+  sleep()
+  print(CRED +"Jums zvana spēlēs rīkotāji par telefonu! Viņi Jums stāsta: " + CEND)
+  sleep()
+  print("Heyā, heyā! Sveicināts Cēsīs, vienā no vecākajām Latvijas pilsētām!")
+  sleep()
+  print("Tu jau zini, kas sagaida! Jāatbild uz mūsu izdomātu jautājumu. Atbildi kamēr vari. Pašreiz tev ir: ", punkti, "punktu")
+  sleep()
+  print("Kurā gadā Cēsis ieguva pilsētu tiesības?")
+  print("(1) - 1245. gadā")
+  print("(2) - 1323. gadā")
+  k=0
+  s=1
+  while s != k:
+    z = input("Atbilde: ")
+    if z == "2":
+      print("Precīza atbilde! Jums tiek piešķirts 1. punkts par atbildi")
+      punkti += 1
+      print("Pašreiz Jums ir:", punkti, "punkti/-s")
+      k+=1
+    elif z == "1":
+      print("Diemžēl, atbilde nav pareiza. Mēģiniet vēlreiz! - 0,5p")
+      punkti -= 0.5 
+      print("Pašreiz Jums ir:", punkti, "punkti/-s")
+      k+=0
+    elif z == "n":
+      noteikumi()
+      k+=0
+    else:
+      print("Netika ievadīts neviens no piedāvātājiem skaitļiem!")
+      k+=0  
+  print("Jautājums ir atbildēts, varam turpināt spēli!")
+  print("Pašreiz tavs akumulatora uzlādes daudzums ir:", sveikini())
+  print("Pašreizējais laiks ir:", laicins())
+  print("------------------------------------------------")  
+
+def talak():
+  print("Nu pienācis nākamais solis. Vai dosieties uz nākamo kontrolpunktu un riskēsiet, vai brauksiet uzlādēt savu akumulatoru?")
+
+cesis()
+
+talak()
