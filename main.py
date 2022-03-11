@@ -1,3 +1,5 @@
+import csv as csv
+import numpy as np
 from PIL import Image
 #myImage = Image.open("filter(function, iterable).jpg");
 #myImage.show();
@@ -36,6 +38,7 @@ def laikap():
   b = random.randint(1, 2)
   if b == 1:
     print("Tagad ārā līst lietus, zibeņi zibšņ - 80km")
+    
   elif b == 2:
     print("Tagad ārā spīd skaista saulīte - 140km")
   else:
@@ -43,8 +46,6 @@ def laikap():
   fails1 = open("kontrolpunkti.csv","r")
   lasa = csv.DictReader(fails1)
   lauki = ['k1','k2','k3','k4','k5','k6','k7','k8','k9']
-  for rinda in lasa:
-    print(int(rinda['k1']))
 
   
 CRED = '\033[91m'
@@ -54,15 +55,22 @@ D = '\033[36m'
 import os
 
 def cls():
+    import time
+    time.sleep(5)
     os.system('cls' if os.name=='nt' else 'clear')
 import csv
 def rekinal():
   fails1 = open("kontrolpunkti.csv","r")
   lasa = csv.DictReader(fails1)
-  lauki = ['k1','k2','k3','k4','k5','k6','k7','k8','k9']
   for rinda in lasa:
     print(80-int(rinda['k1']))
 rekinal()
+def rekinas():
+  fails1 = open("kontrolpunkti.csv","r")
+  lasa = csv.DictReader(fails1)
+  for rinda in lasa:
+    print(140-int(rinda['k1']))
+rekinas()
 class style():
     BLACK = '\033[30m'
     RED = '\033[31m'
@@ -125,7 +133,6 @@ def valmiera():
   print("Labs darbs, kas padarīts! Jautājums ir atbildēts pareizi, varam doties tālāk!")
 
 valmiera()
-
 def vidusp():
   gulet()
   print("Pirms dodaties uz Cēsis, vai vēlaties uzzināt spēles noteikumus vēlreiz?")
@@ -161,7 +168,7 @@ def redzams():
   else:
     return "kaķis"
 
-
+cls()
 def saule():
   import random
   dd = random.randint(1, 3)
@@ -196,6 +203,9 @@ def us1():
   print("------------------------------------------------")
   print(CRED + "Esat veiksmīgi iebraukuši Cēsīs!" + CEND)
   print("------------------------------------------------")
+  cls()
+
+
 
 def viens1():
     s = 1
@@ -278,7 +288,9 @@ def cesis():
   sleep()
   print("Heyā, heyā! Sveicināts Cēsīs, vienā no vecākajām Latvijas pilsētām!")
   sleep()
-  print("Tu jau zini, kas sagaida! Jāatbild uz mūsu izdomātu jautājumu. Atbildi kamēr vari. Pašreiz tev ir: ", punkti, "punktu")
+  print("Kā izskātas Cēsu pils? Vai tā tik nav smuka?")
+  sleep()
+  print("Tu jau zini, kas sagaida! Jāatbild uz mūsu izdomātu jautājumu. Šoreiz jautājums nav par apskates objektu, bet tāpat tas ir interesants! Atbildi kamēr vari. Pašreiz tev ir: ", punkti, "punktu")
   sleep()
   print("Kurā gadā Cēsis ieguva pilsētu tiesības?")
   print("(1) - 1245. gadā")
@@ -304,13 +316,48 @@ def cesis():
       print("Netika ievadīts neviens no piedāvātājiem skaitļiem!")
       k+=0  
   print("Jautājums ir atbildēts, varam turpināt spēli!")
+  sleep()
   print("Pašreiz tavs akumulatora uzlādes daudzums ir:", sveikini())
+  sleep()
   print("Pašreizējais laiks ir:", laicins())
   print("------------------------------------------------")  
 
-def talak():
+def sigulda():
+  sleep()
+  print(CRED + "Jums zvana spēles rīkotaji, viņi stāsta: " + CEND)
+  print("Sveicināts Siguldā!")
+
+def uzladesstacija():
+  print("Atceries, ka jaizvēlās pats tuvākais, jo var nesanākt akumulatora uzlādes daudzums")
+  sleep()
+
+def protams():
   print("Nu pienācis nākamais solis. Vai dosieties uz nākamo kontrolpunktu un riskēsiet, vai brauksiet uzlādēt savu akumulatoru?")
+  sleep()
+  print("Atgādinājums:", sveikini(), "palikuši akumulatora daudzums")
+  sleep()
+  print("(1) - Kontrolpunkts")
+  print("(2) - Uzlādes stacija")
+  k=0
+  s=1
+  while s != k:
+    c = input("Atbilde: ")
+    if c == "1":
+      print("Labi, tad Jūsu otrais kontrolpunkts - Sigulda ! Lai Jums veiksmīgs brauciens! ")
+      sigulda()
+      k+=1
+    elif c == "2":
+      print("Izvēlaties lūdzu, uz kuru TUVĀKO uzlādes staciju brauksiet?(no 3-6): ")
+      uzladesstacija()
+      k+=1
+    elif c == "n":
+      noteikumi()
+      k+=0
+    else:
+      print("Nesapratu atbildi, lūdzu mēģiniet vēlreiz!")
+      k+=0
+  
 
 cesis()
 
-talak()
+protams()
