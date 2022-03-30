@@ -27,7 +27,7 @@ def noteikumi():
 def ievads():
   print("Spēles nosaukums - ", CRED + "Slapjie bandīti" + CEND)
   print("Autori - Ričards Plotnieks, Rainers Jānis Sprincis")
-  print()
+  print("Spēlē jāspiež tastatūras poga'Enter'.")
   noteikumi()
 ievads()
 def laiks():
@@ -496,15 +496,4 @@ def laiks2():
   local_time = time.ctime(seconds)
   print("Laiks, kad beidzāt spēli:", local_time)
 
-
-def izprinte():
-  f1 = open("saglabats.csv", "r")
-  lauki = ["Vards","Punkti"] 
-  raksta = csv.DictReader(f1, fieldnames=lauki,delimiter=",") 
-  for i in range():
-    print(raksta)
-
-
-
 laiks2()
-#izprinte()
